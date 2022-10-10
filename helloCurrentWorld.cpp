@@ -12,12 +12,14 @@ int main(){ // main thread thats able to make more threads, like in this instanc
 
     // another way to do this
     // std::thread t{ hello };  // didnt work 
-
-
+    
+    // perhaps compile in c++11?
+    // std::thread t{ (  hello()  ) };
+    // std::thread t{ hello() }; // this causes an error in regards to the brackets
 
     bool b;
-
-    b= false;
+    b= true; // if true then main will wait for t to be completed and will see its output
+    // if false then main will most likely complete before t completes
 
     if(b){
         t.join();
@@ -27,8 +29,6 @@ int main(){ // main thread thats able to make more threads, like in this instanc
         // and this case we may not see hello output its data
     }
 
-
-    // t.join(); // we wait fot the thread "t" to finish
 }
 
 // g++ helloCurrentWorld.cpp -o helloCurrentWorld.exe
