@@ -1,0 +1,22 @@
+Problems with sharing data between threads
+    Race conditions
+    Anything where the outcome depends on the relative ordering of excecution of operations on two or more threads.
+    The threads race to perform their respective operations. 
+
+    data races == race conditions (can be cause of udefined behavior)
+
+Protecting data with mutexes
+
+Alternate facilities for protecting shared data
+
+    One way to deal with problematic race conditions, is to wrap the data structure
+    with a protection mechanism, to ensure that only the thread actually performing 
+    a modification can see the intermediate states where the invariants are broken.
+
+    So the thread can see what modifications are being taken in place by another thread?
+
+    
+
+
+
+
