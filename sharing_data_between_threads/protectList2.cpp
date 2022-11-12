@@ -53,5 +53,6 @@ int main(){
     }
     // anObject1.some_list= {0,1,2,2,3,4,5}
 
-    std::thread firstThread( anObject1.add_to_list(6) );
+    // invalid use of void expression
+    std::thread firstThread( anObject1.add_to_list,6 );
 }
