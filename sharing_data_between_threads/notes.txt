@@ -15,8 +15,20 @@ Alternate facilities for protecting shared data
 
     So the thread can see what modifications are being taken in place by another thread?
 
-    
 
 
+Preservering the invariants is known as "lock free programming" CH 7
+Memory Model is covered in ch 5
 
+
+Software Transactional Memory (STM)
+
+This is essentially synchronization? So you lose time by waiting?
+
+3.2 Protecting Shared Data With mutexes
+Mutually Exclusive, if any thread was trying to access a data structure, 
+and another tried to the same data structure, it would have to wait until 
+the first thread was finished
+
+You need to structure your code to protect 
 
