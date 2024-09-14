@@ -5,7 +5,7 @@
 
 #include<list> // ?
 #include<mutex> // mutex and lock_guard
-#include<algorithm>
+#include<algorithm> // for std::find
 #include<thread>
 
 #include<iostream>
@@ -17,6 +17,10 @@ std::list<int> some_list;
 std::mutex firstMutex; // this is a global instance
 
 // so when we use "firstMutex" in "add_to_list", "firstMutex" is locked and unable to be used in "list_contains" 
+// b/c there is one lock_gaurd in each function, theyre mutually exlusive
+
+// what if other Data Structures in the add_to_list were in the functions
+// would those get locked as well?
 
 // we are locking some_list
 void add_to_list( int new_value){

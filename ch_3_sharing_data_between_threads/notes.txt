@@ -1,3 +1,9 @@
+what is the difference between a thread and a mutex?
+- threads allow for processes
+- but mutex is there to help protect data   
+    - allowing for "mutual exclusion" - allowing for primitive synchronization
+    
+
 Problems with sharing data between threads
     Race conditions
     Anything where the outcome depends on the relative ordering of excecution of operations on two or more threads.
@@ -5,7 +11,11 @@ Problems with sharing data between threads
 
     data races == race conditions (can be cause of udefined behavior)
 
-Protecting data with mutexes
+Protecting data with mutex - mutual exclusion (3.2)
+- before accessing a shared data structure, you lock the mutex
+- after you finish accessing the data structure (DS) you unlock the mutex
+- mutex also come with their own problems, in the form of a deadlock (3.2.4)
+- we also have lock_guard which provides RAII for construction and deconstruction
 
 Alternate facilities for protecting shared data
 
@@ -18,6 +28,7 @@ Alternate facilities for protecting shared data
 
 
 Preservering the invariants is known as "lock free programming" CH 7
+
 Memory Model is covered in ch 5
 
 
