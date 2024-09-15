@@ -42,7 +42,7 @@ void my_example(){
 }
 
 int main(){
-    my_example(); // we use the wrapper we 
+    // my_example(); // we use the wrapper we 
 }
 
 
@@ -53,9 +53,17 @@ void degenerate_function(some_data & protected_data){
 }
 
 
-
+// you have to mark all the pieces of code that access "some_data" objects
+// as mutually exclusive
 void foo(){
     // data_wrapper.process_data( degenerate_function )
     x.process_data( degenerate_function ); // i didnt know we could pass functions
+    // so a lock_gaurd is needed here as well?
+    // rule: dont pass pointers and references to protected data 
+    // outside the scope of the lock
+    // 1. returning them from a function
+    // 2. storing them in externally visible memory
+    // 4. passing them as arguments to user-supplied functions
+    
     unprocted_pointer->do_something();
 }
