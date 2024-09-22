@@ -1,0 +1,5 @@
+You need to protect data but also to sync actions on seperate waitingForThreadToFinish
+
+Common to want a thread to wait for a specific event to happen
+- this is done through the form of "condition variables" and "futures"
+
