@@ -38,7 +38,7 @@ void producer(){
     for(int i=0; i<10; ++i){ // ++i is more efficient than i++ - why though?
 
         // this is not necessary since its used for simulation?
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000) ); // pre
+        std::this_thread::sleep_for(std::chrono::milliseconds(100) ); // pre
         // when producer sleep_for is 500, we do not see producer waits, with consumer of sleep_for 800
 
         // std::lock_guard<std::mutex> lk(mtx); // mtx locking q at this point?
@@ -49,9 +49,9 @@ void producer(){
         // and assk the consumer to eat?
         while(q.size()>=maxBufferSize){ // when sleep_for is 500, we do not see the wait
             std::cout<< "Producer waits, since queue is full\n";
-            cv.wait(lk); // we notify for consumer to eat?
-            // std::cout<< ""
-            // so conditional variables take in lock_guards?
+            cv.wait(lk); 
+            // wait unlocks the mutex, and puts the thread in a blocked/waiting state
+            
         }
 
         q.push(i); // we add into the queue

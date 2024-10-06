@@ -10,6 +10,7 @@ struct data_chunk{
     std::string b;
 };
 
+// global variables to be accessed b/w threads?
 std::mutex mut;
 std::queue<data_chunk> data_queue; // used to pass data b/w 2 threads
 std::condition_variable data_cond;
