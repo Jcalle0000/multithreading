@@ -51,6 +51,7 @@ class threadsafe_queue{
         }
 
         // why do we need a shared_ptr?
+        // manage memory allocation?
         std::shared_ptr<T> wait_and_pop(){
             std::unique_lock<std::mutex> lk(mtx);// how we know if we need unique?
             // b/c of the wait?
@@ -58,6 +59,29 @@ class threadsafe_queue{
             cv.wait(lk, [this]{
                 return!q.empty();
             });
+
+            std::shared_ptr<T> res(std::make_shared<T>( q.front() ) );
+            q.pop();
+            return res;
+
+        }
+
+        std::shared_ptr<T> try_pop(){
+            std::lock_guard<std::mutex> lk(mtx);
+
+            if(q.empty() ){
+                return std::shared_ptr<T>(); // what are we returning?
+            }
+
+            // why do we need this?
+            std::shared_ptr<T> res( std::make_shared<T>(q.front() ) );
+            q.pop();
+            return res;
+        }
+
+        boo empty() const{
+            std::lock_guard<std::mutex> lk (mut);
+            return q.empty();
         }
 };
 
