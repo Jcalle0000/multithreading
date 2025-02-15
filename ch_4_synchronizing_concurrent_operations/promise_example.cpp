@@ -48,6 +48,10 @@ int main(){
     // waiting threads could potentially wait forever
     std::future<double> result=some_promise.get_future();
 
+    // are futures also used to pass data from one thread to another?
+    // accessing future from multiple threads will result in data races/ undefined behavior
+    // after calling get, only one thread can access the data, after the first call there's
+    // no value to retrive
 
     // thread will set a value but also a exception?
     std::thread t(worker);
